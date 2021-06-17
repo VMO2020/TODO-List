@@ -1,0 +1,25 @@
+.todolist__item {
+	font-size: 22px;
+	margin-left: -40px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	// border: 2px solid;
+
+	.item {
+		list-style: none;
+	}
+
+	.checkbox {
+		margin-right: 0.3em;
+
+		&:checked ~ .item {
+			text-decoration: line-through;
+		}
+	}
+
+	input {
+		font-size: 22px;
+		margin-right: 0.3em;
+	}
+}
