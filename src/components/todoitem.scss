@@ -1,25 +1,42 @@
+@import '../styles/styles.scss';
+
 .todolist__item {
-	font-size: 22px;
-	margin-left: -40px;
-	padding: 0;
+	@include font-size(22px, 28px);
+	background-color: white;
 	display: flex;
 	align-items: center;
+	margin-bottom: 0.3em;
+	padding: 0.2em 0;
 	// border: 2px solid;
 
 	.item {
 		list-style: none;
+		margin-left: 0.5em;
+		width: 90%;
+		word-wrap: break-word;
 	}
 
 	.checkbox {
 		margin-right: 0.3em;
+		margin-left: 0.3em;
 
 		&:checked ~ .item {
 			text-decoration: line-through;
 		}
 	}
 
-	input {
-		font-size: 22px;
+	&-input {
+		@include font-size(22px, 28px);
+		color: rgb(50, 50, 50);
+		margin-left: 0.5em;
 		margin-right: 0.3em;
+		outline: none;
+		width: 90vw;
+		max-width: calc(800px - 1.6em);
+	}
+
+	.btn {
+		margin-left: 0.5em;
+		margin-top: 0.3em;
 	}
 }

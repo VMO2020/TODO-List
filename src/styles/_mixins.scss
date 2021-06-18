@@ -1,0 +1,27 @@
+// FONT-SIZE RESPONSIVE - Mobile First -----------------------------------------------------
+// The calculation is:
+// minSize + (maxSize - minSize) * ( (100vw - minWidth) / ( maxWidth - minWidth) )
+
+@mixin font-size(
+	$minValue,
+	// minSize
+	$maxValue,
+	// maxSize
+) {
+	$fdiff: #{num($maxValue) - num($minValue)};
+	$breakdiff: #{num($maxWidth) - num($minWidth)};
+	// Mobile (Default Size)
+	font-size: $minValue;
+
+	// Tablet Size
+	@media only screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+		font-size: calc(
+			#{$minValue} + #{$fdiff} * ((100vw - #{$minWidth}) / #{$breakdiff})
+		);
+	}
+
+	// Desktop Size
+	@media only screen and (min-width: $maxWidth) {
+		font-size: $maxValue;
+	}
+}

@@ -19,6 +19,7 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 	};
 
 	const handleChange = (e) => {
+		if (e.target.value === '') return;
 		let newTodos = [...todos];
 		const todoItem = newTodos.find((item) => todo.id === item.id);
 		todoItem.task = e.target.value;
@@ -40,9 +41,14 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 
 			{update && (
 				<div>
-					<input onChange={handleChange} placeholder={todo.task} />
+					<input
+						className='todolist__item-input'
+						onChange={handleChange}
+						value={todo.task}
+						id='todo-task'
+					/>
 					<button className='btn' onClick={handleEdit}>
-						🖌
+						💾
 					</button>
 				</div>
 			)}

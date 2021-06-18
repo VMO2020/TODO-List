@@ -46,23 +46,44 @@ export const TodoApp = () => {
 
 	return (
 		<div className='container'>
-			<h1>TODO List App</h1>
-			<input
-				type='text'
-				className='newtodo'
-				value={todo}
-				onChange={handleChange}
-				placeholder='Add New Todo'
-			/>
+			<div className='container___top'>
+				<h1>TODO List App</h1>
+				<input
+					type='text'
+					className='newtodo'
+					value={todo}
+					onChange={handleChange}
+					placeholder='Add New Todo'
+				/>
+				<br />
+				<div className='container___top-control'>
+					<div>
+						<button className='btn' onClick={handleAddTodo}>
+							✏️
+						</button>
+						<button className='btn' onClick={handleDelete}>
+							🗑
+						</button>
+					</div>
+
+					<span className='tasks'>
+						{`Pending Tasks: `}
+						<b className='tasks__record'>{`${
+							todos.filter((todo) => !todo.completed).length
+						}`}</b>
+					</span>
+				</div>
+			</div>
+
+			<div className='todos'>
+				<TodoList todos={todos} setTodos={setTodos} />
+			</div>
 			<br />
-			<button className='btn' onClick={handleAddTodo}>
-				✏️
-			</button>
-			<button className='btn' onClick={handleDelete}>
-				🗑
-			</button>
-			<hr />
-			<TodoList todos={todos} setTodos={setTodos} />
+			<footer>
+				<a href='https://vmog.net/' target='_blank' rel='noreferrer'>
+					Copyright and design © VMOG
+				</a>
+			</footer>
 		</div>
 	);
 };

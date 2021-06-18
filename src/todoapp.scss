@@ -1,16 +1,83 @@
-.container {
+@import './styles/styles.scss';
+
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
 
-	.newtodo {
-		font-size: 24px;
+.container {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 100vw;
+	max-width: $maxWidth;
+	margin: 0;
+	padding: 0;
+	background-color: $backColor;
+	min-height: 100vh;
+	margin: auto;
+	overflow: hidden;
+	// border: 2px solid red;
+
+	&___top {
+		position: fixed;
+		background-color: $backColor;
+		width: 100%;
+		max-width: $maxWidth;
+
+		h1 {
+			@include font-size(28px, 38px);
+			font-weight: 900;
+			background-color: $mainColor;
+			color: $Light;
+			text-align: center;
+			padding: 0.3em 0;
+			margin-top: 0;
+		}
+
+		.newtodo {
+			@include font-size(22px, 28px);
+			// font-size: 24px;
+			margin-top: 0.5em;
+			margin-left: 0.3em;
+			padding: 0.3em 0.2em;
+			width: calc(100% - 0.6em);
+			max-width: $maxWidth;
+			outline: none;
+			border: 2px solid $mainColor;
+			border-radius: 3px;
+		}
+
+		&-control {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.8em 0.5em;
+
+			.tasks {
+				@include font-size(20px, 22px);
+				padding: 0 0.2em;
+			}
+		}
 	}
 
-	.btn {
-		font-size: 22px;
-		padding: 3px 15px;
-		margin-top: 5px;
-		margin-right: 10px;
+	footer {
+		font-family: 'Courier New', Courier, monospace;
+		text-align: center;
+		margin: 2em 0;
+
+		a {
+			@include font-size(16px, 22px);
+			color: black;
+			width: calc(100%-2em);
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.container___top-control {
+		padding: 1em;
 	}
 }
