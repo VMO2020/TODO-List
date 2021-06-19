@@ -36,6 +36,12 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 		setTodos(filterTodos);
 	};
 
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') {
+			handleEdit(e);
+		}
+	};
+
 	return (
 		<div className='todolist__item'>
 			<input type='checkbox' className='checkbox' onClick={handleToggle} />
@@ -52,6 +58,7 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 						onChange={handleChange}
 						value={todo.task}
 						id='todo-task'
+						onKeyDown={handleKeyDown}
 					/>
 					<button className='btn' onClick={handleEdit}>
 						💾

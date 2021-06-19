@@ -44,6 +44,12 @@ export const TodoApp = () => {
 		setTodos(filterTodos);
 	};
 
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') {
+			handleAddTodo(e);
+		}
+	};
+
 	return (
 		<div className='container'>
 			<div className='container___top'>
@@ -55,6 +61,7 @@ export const TodoApp = () => {
 					value={todo}
 					onChange={handleChange}
 					placeholder='Add New Todo'
+					onKeyDown={handleKeyDown}
 				/>
 				<br />
 				<div className='container___top-control'>
