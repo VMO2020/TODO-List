@@ -47,6 +47,7 @@ export const TodoApp = () => {
 	return (
 		<div className='container'>
 			<div className='container___top'>
+				<div className='top'></div>
 				<h1>TODO List App</h1>
 				<input
 					type='text'
@@ -75,9 +76,8 @@ export const TodoApp = () => {
 				</div>
 			</div>
 
-			<div className='todos'>
-				<TodoList todos={todos} setTodos={setTodos} />
-			</div>
+			<TodoList todos={todos} setTodos={setTodos} />
+
 			<br />
 			<footer>
 				<a href='https://vmog.net/' target='_blank' rel='noreferrer'>

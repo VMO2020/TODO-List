@@ -8,6 +8,8 @@ $maxWidth: 800px !default;
 $mainColor: rgb(0, 122, 255); // Apple System Light Blue
 $Light: rgb(247, 247, 247); // My White
 $backColor: rgb(230, 230, 230); // Background color
+$Dark: rgb(28, 28, 30); // My Black
+$MedLight: rgb(142, 142, 147); // My Gray: Silver
 
 .btn {
 	@include font-size(18px, 22px);

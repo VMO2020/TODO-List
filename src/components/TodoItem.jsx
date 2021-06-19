@@ -30,6 +30,12 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 		setUpdate(false);
 	};
 
+	const handleDelete = () => {
+		let newTodos = [...todos];
+		const filterTodos = newTodos.filter((item) => todo.id !== item.id);
+		setTodos(filterTodos);
+	};
+
 	return (
 		<div className='todolist__item'>
 			<input type='checkbox' className='checkbox' onClick={handleToggle} />
@@ -49,6 +55,9 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 					/>
 					<button className='btn' onClick={handleEdit}>
 						💾
+					</button>
+					<button className='btn' onClick={handleDelete}>
+						🗑
 					</button>
 				</div>
 			)}
