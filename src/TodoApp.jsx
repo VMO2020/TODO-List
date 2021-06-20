@@ -6,12 +6,14 @@ import './todoapp.scss';
 const KEY = 'simpleTodoList';
 
 export const TodoApp = () => {
-	const [todos, setTodos] = useState([{}]);
+	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState('');
 
 	useEffect(() => {
-		const data = localStorage.getItem(KEY) || 'Empty';
-		data === 'Empty' ? console.log(data) : setTodos(JSON.parse(data));
+		const data = localStorage.getItem(KEY);
+		if (data) {
+			setTodos(JSON.parse(data));
+		}
 	}, []);
 
 	useEffect(() => {
@@ -54,7 +56,7 @@ export const TodoApp = () => {
 		<div className='container'>
 			<div className='container___top'>
 				<div className='top'></div>
-				<h1>TODO List App</h1>
+				<h1>ToDo List</h1>
 				<input
 					type='text'
 					className='newtodo'

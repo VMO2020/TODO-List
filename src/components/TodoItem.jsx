@@ -45,6 +45,7 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 	return (
 		<div className='todolist__item'>
 			<input type='checkbox' className='checkbox' onClick={handleToggle} />
+
 			{!update && (
 				<li className='item' onClick={handleUpdate}>
 					{todo.task}
