@@ -2,14 +2,28 @@
 
 .todolist {
 	margin: 0;
-	margin-top: 12rem;
+	margin-top: 12em;
 	padding: 0;
+	width: 100%;
+	height: calc(100vh - 16em);
+	overflow: hidden;
+	overflow-y: auto;
 	// border: 2px solid red;
+
+	.readyTasks {
+		text-align: center;
+		margin: 0.5em auto;
+
+		&__list {
+			color: grey;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) {
 	.todolist {
 		margin-top: 15rem;
 		padding: 0 1em;
+		height: calc(100vh - 21em);
 	}
 }

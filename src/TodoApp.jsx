@@ -55,7 +55,6 @@ export const TodoApp = () => {
 	return (
 		<div className='container'>
 			<div className='container___top'>
-				<div className='top'></div>
 				<h1>ToDo List</h1>
 				<input
 					type='text'
