@@ -11,6 +11,8 @@
 	// border: 2px solid red;
 
 	.readyTasks {
+		@include font-size(18px, 22px);
+		text-transform: uppercase;
 		text-align: center;
 		margin: 0.5em auto;
 

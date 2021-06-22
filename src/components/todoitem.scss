@@ -19,11 +19,6 @@
 	.checkbox {
 		margin-right: 0.5em;
 		margin-left: 1em;
-
-		&:checked ~ .item {
-			text-decoration: line-through;
-			color: grey;
-		}
 	}
 
 	&-input {

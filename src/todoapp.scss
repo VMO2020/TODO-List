@@ -37,6 +37,15 @@
 				0 -3px 6px rgba(255, 255, 255, 0.3);
 		}
 
+		.sort {
+			@include font-size(20px, 28px);
+			position: absolute;
+			top: 0.5rem;
+			right: 1rem;
+			background-color: transparent;
+			border: none;
+		}
+
 		.newtodo {
 			@include font-size(22px, 28px);
 			// font-size: 24px;
@@ -62,6 +71,12 @@
 				@include font-size(20px, 22px);
 				padding: 0 0.2em;
 			}
+		}
+
+		.tasks-title {
+			@include font-size(18px, 22px);
+			text-transform: uppercase;
+			text-align: center;
 		}
 	}
 
@@ -89,6 +104,11 @@
 		border-radius: 10px;
 		box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
 		// border: 2px solid $Dark;
+
+		.sort {
+			top: 0.7rem;
+			right: 1.5rem;
+		}
 
 		&___top {
 			&-control {

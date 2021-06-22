@@ -2,11 +2,25 @@ import React from 'react';
 import { TodoItem } from '../components/TodoItem';
 import './todolist.scss';
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({ todos, setTodos, sorted }) => {
+	const newTodos = [...todos];
+	function compareTasks(a, b) {
+		if (a.task < b.task) {
+			return -1;
+		}
+		if (a.task > b.task) {
+			return 1;
+		}
+		return 0;
+	}
+
+	const sortedTodos = newTodos.sort(compareTasks);
+	// console.log(sortedTodos);
+
 	return (
 		<div className='todolist'>
 			<ul>
-				{todos.map(
+				{(sorted ? sortedTodos : todos).map(
 					(todo, i) =>
 						!todo.completed && (
 							<TodoItem
@@ -24,7 +38,7 @@ export const TodoList = ({ todos, setTodos }) => {
 				)}
 			</div>
 			<ul className='readyTasks__list'>
-				{todos.map(
+				{(sorted ? sortedTodos : todos).map(
 					(todo, i) =>
 						todo.completed && (
 							<TodoItem

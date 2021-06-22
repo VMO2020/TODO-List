@@ -8,6 +8,7 @@ const KEY = 'simpleTodoList';
 export const TodoApp = () => {
 	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState('');
+	const [sorted, setSorted] = useState(false);
 
 	useEffect(() => {
 		const data = localStorage.getItem(KEY);
@@ -56,6 +57,13 @@ export const TodoApp = () => {
 		<div className='container'>
 			<div className='container___top'>
 				<h1>ToDo List</h1>
+				<button
+					className='sort'
+					onClick={() => setSorted(!sorted)}
+					style={sorted ? { color: 'orange' } : { color: 'white' }}
+				>
+					⬇
+				</button>
 				<input
 					type='text'
 					className='newtodo'
@@ -82,9 +90,12 @@ export const TodoApp = () => {
 						}`}</b>
 					</span>
 				</div>
+				<div className='tasks-title'>
+					<h4>Tasks</h4>
+				</div>
 			</div>
 
-			<TodoList todos={todos} setTodos={setTodos} />
+			<TodoList todos={todos} setTodos={setTodos} sorted={sorted} />
 
 			<br />
 			<footer>
