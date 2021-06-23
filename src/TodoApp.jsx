@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { TodoList } from './components/TodoList';
+import { ReactComponent as Icon1 } from './assets/filter_list_24dp.svg';
 import './todoapp.scss';
 
 const KEY = 'simpleTodoList';
@@ -60,9 +61,9 @@ export const TodoApp = () => {
 				<button
 					className='sort'
 					onClick={() => setSorted(!sorted)}
-					style={sorted ? { color: 'orange' } : { color: 'white' }}
+					style={sorted ? { fill: 'orange' } : { fill: 'white' }}
 				>
-					⬇
+					<Icon1 />
 				</button>
 				<input
 					type='text'

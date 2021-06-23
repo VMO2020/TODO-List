@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './todoitem.scss';
 
+import { ReactComponent as Icon1 } from '../assets/done_outline_24dp.svg'
+import { ReactComponent as Icon2 } from '../assets/crop_square_24dp.svg'
+
 export const TodoItem = ({ todo, todos, setTodos }) => {
 	const [update, setUpdate] = useState(false);
 
@@ -44,7 +47,8 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 
 	return (
 		<div className='todolist__item'>
-			<input type='checkbox' className='checkbox' onClick={handleToggle} />
+			<label for={todo.id} >{todo.completed ? <Icon1 style={{ fill: 'green'}}/> : <Icon2 style={{ fill: 'grey'}}/> }</label>
+			<input type='checkbox' id={todo.id} className='checkbox' onClick={handleToggle} />
 
 			{!update && (
 				<li className='item' onClick={handleUpdate}>
