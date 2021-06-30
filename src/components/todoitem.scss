@@ -19,11 +19,17 @@
 	.checkbox {
 		display: none;
 	}
-	
-	label{
+
+	label {
 		margin-right: 0.5em;
 		margin-left: 1em;
 		color: grey;
+		line-height: 1.3em;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
 	}
 
 	&-input {
@@ -34,7 +40,6 @@
 		outline: none;
 		width: 90vw;
 		max-width: calc(800px - 1.6em);
-		
 	}
 
 	.btn {
@@ -51,8 +56,16 @@
 		.item {
 			color: $Dark;
 		}
+
 		&-input {
 			max-width: calc(800px - 2.7em);
+		}
+
+		label {
+			svg {
+				width: 22px;
+				height: 22px;
+			}
 		}
 	}
 }

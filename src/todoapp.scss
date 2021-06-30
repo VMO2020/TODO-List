@@ -10,13 +10,12 @@
 	font-family: Arial, Helvetica, sans-serif;
 	width: 100vw;
 	max-width: $maxWidth;
+	min-height: 100vh;
 	margin: 0;
 	padding: 0;
-	min-height: 100vh;
 	background-color: $backColor;
 	margin: auto;
 	overflow: hidden;
-	// border: 2px solid red;
 
 	&___top {
 		position: fixed;
@@ -37,10 +36,19 @@
 				0 -3px 6px rgba(255, 255, 255, 0.3);
 		}
 
+		.clear {
+			@include font-size(20px, 28px);
+			position: absolute;
+			top: 0.6rem;
+			left: 1rem;
+			background-color: transparent;
+			border: none;
+		}
+
 		.sort {
 			@include font-size(20px, 28px);
 			position: absolute;
-			top: 0.3rem;
+			top: 0.5rem;
 			right: 1rem;
 			background-color: transparent;
 			border: none;
@@ -104,6 +112,11 @@
 		border-radius: 10px;
 		box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
 		// border: 2px solid $Dark;
+
+		.clear {
+			top: 0.8rem;
+			left: 1.5rem;
+		}
 
 		.sort {
 			top: 0.7rem;

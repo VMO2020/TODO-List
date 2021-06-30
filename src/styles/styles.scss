@@ -11,6 +11,20 @@ $backColor: rgb(230, 230, 230); // Background color
 $Dark: rgb(28, 28, 30); // My Black
 $MedLight: rgb(142, 142, 147); // My Gray: Silver
 
+body {
+	background: #000000; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#434343,
+		#000000
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#434343,
+		#000000
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .btn {
 	@include font-size(18px, 22px);
 	background-color: white;
@@ -30,5 +44,12 @@ $MedLight: rgb(142, 142, 147); // My Gray: Silver
 		background-color: grey;
 		transform: scale(0.8);
 		box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5);
+	}
+}
+
+@media screen and (max-width: 350px) {
+	.btn {
+		font-size: 14px;
+		padding: 0.2em 0.6em;
 	}
 }

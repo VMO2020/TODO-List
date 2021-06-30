@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
+
+// Components
 import { TodoList } from './components/TodoList';
+
+// Icons
 import { ReactComponent as Icon1 } from './assets/filter_list_24dp.svg';
+import { ReactComponent as Icon2 } from './assets/delete_24dp.svg';
+
+// Styles
 import './todoapp.scss';
 
 const KEY = 'simpleTodoList';
@@ -10,6 +17,7 @@ export const TodoApp = () => {
 	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState('');
 	const [sorted, setSorted] = useState(false);
+	const [clear, setClear] = useState(false);
 
 	useEffect(() => {
 		const data = localStorage.getItem(KEY);
@@ -59,6 +67,13 @@ export const TodoApp = () => {
 			<div className='container___top'>
 				<h1>ToDo List</h1>
 				<button
+					className='clear'
+					onClick={() => setClear(!clear)}
+					style={clear ? { fill: 'orange' } : { fill: 'white' }}
+				>
+					<Icon2 />
+				</button>
+				<button
 					className='sort'
 					onClick={() => setSorted(!sorted)}
 					style={sorted ? { fill: 'orange' } : { fill: 'white' }}
@@ -79,9 +94,11 @@ export const TodoApp = () => {
 						<button className='btn' onClick={handleAddTodo}>
 							✏️
 						</button>
-						<button className='btn' onClick={handleDelete}>
-							🗑
-						</button>
+						{clear && (
+							<button className='btn' onClick={handleDelete}>
+								🗑
+							</button>
+						)}
 					</div>
 
 					<span className='tasks'>
