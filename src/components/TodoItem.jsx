@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './todoitem.scss';
 
-import { ReactComponent as Icon1 } from '../assets/done_outline_24dp.svg';
-import { ReactComponent as Icon2 } from '../assets/crop_square_24dp.svg';
+import { ReactComponent as Icon1 } from '../assets/done_outline.svg';
+import { ReactComponent as Icon2 } from '../assets/crop_square.svg';
 
 export const TodoItem = ({ todo, todos, setTodos }) => {
 	const [update, setUpdate] = useState(false);

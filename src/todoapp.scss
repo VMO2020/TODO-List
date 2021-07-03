@@ -24,7 +24,7 @@
 		max-width: $maxWidth;
 
 		h1 {
-			@include font-size(28px, 38px);
+			@include font-size(24px, 38px);
 			font-weight: 900;
 			font-family: Arial, Helvetica, sans-serif;
 			background-color: $mainColor;
@@ -36,22 +36,28 @@
 				0 -3px 6px rgba(255, 255, 255, 0.3);
 		}
 
-		.clear {
-			@include font-size(20px, 28px);
+		.clear,
+		.sort,
+		.backTop {
 			position: absolute;
-			top: 0.6rem;
-			left: 1rem;
+			top: 0.4em;
+			width: 2em;
+			height: 2em;
 			background-color: transparent;
 			border: none;
+			cursor: pointer;
+		}
+		.clear {
+			left: 1em;
 		}
 
 		.sort {
-			@include font-size(20px, 28px);
-			position: absolute;
-			top: 0.5rem;
-			right: 1rem;
-			background-color: transparent;
-			border: none;
+			right: 1em;
+		}
+		.backTop {
+			top: 0.3em;
+			right: 3.5em;
+			display: none;
 		}
 
 		.newtodo {
@@ -80,12 +86,6 @@
 				padding: 0 0.2em;
 			}
 		}
-
-		.tasks-title {
-			@include font-size(18px, 22px);
-			text-transform: uppercase;
-			text-align: center;
-		}
 	}
 
 	footer {
@@ -113,14 +113,26 @@
 		box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
 		// border: 2px solid $Dark;
 
+		.clear,
+		.sort,
+		.backTop {
+			width: 2.5em;
+			height: 2.5em;
+			top: 0.95em;
+		}
+
 		.clear {
-			top: 0.8rem;
-			left: 1.5rem;
+			left: 1.5em;
 		}
 
 		.sort {
-			top: 0.7rem;
-			right: 1.5rem;
+			right: 1.5em;
+		}
+
+		.backTop {
+			top: 0.8em;
+			right: 6em;
+			display: block;
 		}
 
 		&___top {

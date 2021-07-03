@@ -5,8 +5,9 @@ import { v4 as uuid } from 'uuid';
 import { TodoList } from './components/TodoList';
 
 // Icons
-import { ReactComponent as Icon1 } from './assets/filter_list_24dp.svg';
-import { ReactComponent as Icon2 } from './assets/delete_24dp.svg';
+import { ReactComponent as Icon1 } from './assets/filter_list.svg';
+import { ReactComponent as Icon2 } from './assets/delete.svg';
+import { ReactComponent as Icon3 } from './assets/arrow_upward.svg';
 
 // Styles
 import './todoapp.scss';
@@ -65,7 +66,7 @@ export const TodoApp = () => {
 	return (
 		<div className='container'>
 			<div className='container___top'>
-				<h1>ToDo List</h1>
+				<h1>ToDoList</h1>
 				<button
 					className='clear'
 					onClick={() => setClear(!clear)}
@@ -80,6 +81,12 @@ export const TodoApp = () => {
 				>
 					<Icon1 />
 				</button>
+				{todos.length > 12 && (
+					<a href='#toplist' className='backTop' style={{ fill: 'orange' }}>
+						<Icon3 />
+					</a>
+				)}
+
 				<input
 					type='text'
 					className='newtodo'
@@ -107,9 +114,6 @@ export const TodoApp = () => {
 							todos.filter((todo) => !todo.completed).length
 						}`}</b>
 					</span>
-				</div>
-				<div className='tasks-title'>
-					<h4>Tasks</h4>
 				</div>
 			</div>
 

@@ -19,6 +19,7 @@ export const TodoList = ({ todos, setTodos, sorted }) => {
 
 	return (
 		<div className='todolist'>
+			<h4 id='toplist'>Tasks</h4>
 			<ul>
 				{(sorted ? sortedTodos : todos).map(
 					(todo, i) =>

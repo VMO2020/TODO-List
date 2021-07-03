@@ -2,15 +2,16 @@
 
 .todolist {
 	margin: 0;
-	margin-top: 12em;
+	margin-top: 10em;
 	padding: 0;
 	width: 100%;
-	height: calc(100vh - 16em);
+	height: calc(100vh - 13em);
 	overflow: hidden;
 	overflow-y: auto;
 	// border: 2px solid red;
 
-	.readyTasks {
+	.readyTasks,
+	h4 {
 		@include font-size(18px, 22px);
 		text-transform: uppercase;
 		text-align: center;
@@ -24,7 +25,7 @@
 
 @media screen and (min-width: 768px) {
 	.todolist {
-		margin-top: 15rem;
+		margin-top: 13.5rem;
 		padding: 0 1em;
 		height: calc(100vh - 21em);
 	}
