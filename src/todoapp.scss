@@ -24,6 +24,7 @@
 		max-width: $maxWidth;
 
 		h1 {
+			position: relative;
 			@include font-size(24px, 38px);
 			font-weight: 900;
 			font-family: Arial, Helvetica, sans-serif;
@@ -40,22 +41,27 @@
 		.sort,
 		.backTop {
 			position: absolute;
-			top: 0.4em;
-			width: 2em;
-			height: 2em;
+			top: 0;
 			background-color: transparent;
 			border: none;
 			cursor: pointer;
+			padding: 0.5em;
+			// border: 2px solid red;
+
+			svg {
+				width: 2em;
+				height: 2em;
+			}
 		}
 		.clear {
-			left: 1em;
+			left: 0;
 		}
 
 		.sort {
-			right: 1em;
+			right: 0;
 		}
 		.backTop {
-			top: 0.3em;
+			top: -0.2em;
 			right: 3.5em;
 			display: none;
 		}
@@ -116,23 +122,19 @@
 		.clear,
 		.sort,
 		.backTop {
-			width: 2.5em;
-			height: 2.5em;
-			top: 0.95em;
-		}
+			top: 0;
+			padding: 0.9em;
 
-		.clear {
-			left: 1.5em;
-		}
-
-		.sort {
-			right: 1.5em;
+			svg {
+				width: 2.5em;
+				height: 2.5em;
+			}
 		}
 
 		.backTop {
-			top: 0.8em;
-			right: 6em;
 			display: block;
+			top: -0.3em;
+			right: 6em;
 		}
 
 		&___top {
