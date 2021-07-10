@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 
 // Components
@@ -19,6 +19,8 @@ export const TodoApp = () => {
 	const [todo, setTodo] = useState('');
 	const [sorted, setSorted] = useState(false);
 	const [clear, setClear] = useState(false);
+
+	const scroll = useRef();
 
 	useEffect(() => {
 		const data = localStorage.getItem(KEY);
@@ -47,6 +49,7 @@ export const TodoApp = () => {
 		newTodos.push(newTodo);
 		setTodos(newTodos);
 		setTodo('');
+		scrollToTop();
 		// console.log('todos: ', todos);
 	};
 
@@ -61,6 +64,11 @@ export const TodoApp = () => {
 		if (e.key === 'Enter') {
 			handleAddTodo(e);
 		}
+	};
+
+	const scrollToTop = () => {
+		// Scroll to the end using useRef to Ref=scroll
+		scroll.current.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	return (
@@ -82,9 +90,13 @@ export const TodoApp = () => {
 					<Icon1 />
 				</button>
 				{todos.length > 12 && (
-					<a href='#toplist' className='backTop' style={{ fill: 'orange' }}>
+					<button
+						className='backTop'
+						onClick={scrollToTop}
+						style={{ fill: 'orange' }}
+					>
 						<Icon3 />
-					</a>
+					</button>
 				)}
 
 				<input
@@ -117,7 +129,12 @@ export const TodoApp = () => {
 				</div>
 			</div>
 
-			<TodoList todos={todos} setTodos={setTodos} sorted={sorted} />
+			<TodoList
+				scroll={scroll}
+				todos={todos}
+				setTodos={setTodos}
+				sorted={sorted}
+			/>
 
 			<br />
 			<footer>

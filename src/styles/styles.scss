@@ -11,10 +11,6 @@ $backColor: rgb(230, 230, 230); // Background color
 $Dark: rgb(28, 28, 30); // My Black
 $MedLight: rgb(142, 142, 147); // My Gray: Silver
 
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	background: #000000; /* fallback for old browsers */
 	background: -webkit-linear-gradient(

@@ -47,7 +47,7 @@ export const TodoItem = ({ todo, todos, setTodos }) => {
 
 	return (
 		<div className='todolist__item'>
-			<label for={todo.id}>
+			<label htmlFor={todo.id}>
 				{todo.completed ? (
 					<Icon1 style={{ fill: 'green' }} />
 				) : (

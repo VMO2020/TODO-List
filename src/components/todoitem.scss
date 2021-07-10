@@ -11,7 +11,7 @@
 
 	.item {
 		list-style: none;
-		margin-left: 0.5em;
+		margin-left: 0.3em;
 		width: 85%;
 		word-wrap: break-word;
 	}
@@ -21,10 +21,10 @@
 	}
 
 	label {
-		margin-right: 0.5em;
-		margin-left: 1em;
+		padding: 0 0.6em;
 		color: grey;
 		line-height: 1.5em;
+		// border: 2px solid red;
 
 		svg {
 			width: 0.8em;
