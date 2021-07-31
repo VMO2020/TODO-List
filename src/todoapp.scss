@@ -40,7 +40,9 @@
 
 		.clear,
 		.sort,
-		.backTop {
+		.backTop,
+		.task,
+		.store {
 			position: absolute;
 			top: 0;
 			background-color: transparent;
@@ -56,6 +58,11 @@
 		}
 		.clear {
 			left: 0;
+		}
+
+		.task,
+		.store {
+			left: 3.5em;
 		}
 
 		.sort {
@@ -121,7 +128,9 @@
 
 		.clear,
 		.sort,
-		.backTop {
+		.backTop,
+		.task,
+		.store {
 			top: 0;
 			padding: 0.9em;
 
@@ -129,6 +138,11 @@
 				width: 2.5em;
 				height: 2.5em;
 			}
+		}
+
+		.task,
+		.store {
+			left: 6em;
 		}
 
 		.backTop {

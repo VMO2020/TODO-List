@@ -5,19 +5,28 @@ import { v4 as uuid } from 'uuid';
 import { TodoList } from './components/TodoList';
 
 // Icons
-import { ReactComponent as Icon1 } from './assets/filter_list.svg';
-import { ReactComponent as Icon2 } from './assets/delete.svg';
-import { ReactComponent as Icon3 } from './assets/arrow_upward.svg';
+import { ReactComponent as Filter } from './assets/filter_list.svg';
+import { ReactComponent as Delete } from './assets/delete.svg';
+import { ReactComponent as Arrow } from './assets/arrow_upward.svg';
+import { ReactComponent as Store } from './assets/store.svg';
+import { ReactComponent as Task } from './assets/task.svg';
 
 // Styles
 import './todoapp.scss';
 
+// Local storage names
 const KEY = 'simpleTodoList';
+const PREF = 'preferTodoList';
 
 export const TodoApp = () => {
 	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState('');
+	const [userPreferences, setUserPreferences] = useState({
+		storeUser: false,
+		sortedUser: false,
+	});
 	const [sorted, setSorted] = useState(false);
+	const [store, setStore] = useState(false);
 	const [clear, setClear] = useState(false);
 
 	const scroll = useRef();
@@ -30,9 +39,24 @@ export const TodoApp = () => {
 	}, []);
 
 	useEffect(() => {
+		const userPref = JSON.parse(localStorage.getItem(PREF));
+		console.log('User Pref:', userPref);
+		if (userPref) {
+			setUserPreferences(userPref);
+			setStore(userPref.storeUser);
+			setSorted(userPref.sortedUser);
+		}
+	}, []);
+
+	useEffect(() => {
 		localStorage.setItem(KEY, JSON.stringify(todos));
-		// console.log('Stored');
+		// console.log('Todos Stored');
 	}, [todos]);
+
+	useEffect(() => {
+		localStorage.setItem(PREF, JSON.stringify(userPreferences));
+		console.log('UserPreferences Stored');
+	}, [userPreferences]);
 
 	const handleChange = (e) => {
 		setTodo(e.target.value);
@@ -71,23 +95,57 @@ export const TodoApp = () => {
 		scroll.current.scrollIntoView({ behavior: 'smooth' });
 	};
 
+	const handleStore = () => {
+		setStore(!store);
+		setUserPreferences({
+			...userPreferences,
+			storeUser: !store,
+		});
+	};
+
+	const handleSorted = () => {
+		setSorted(!sorted);
+		setUserPreferences({
+			...userPreferences,
+			sortedUser: !sorted,
+		});
+	};
+
 	return (
 		<div className='container'>
 			<div className='container___top'>
-				<h1>ToDoList</h1>
+				<h1>{store ? 'ShoppingList' : 'ToDoList'}</h1>
 				<button
 					className='clear'
 					onClick={() => setClear(!clear)}
 					style={clear ? { fill: 'orange' } : { fill: 'white' }}
 				>
-					<Icon2 />
+					<Delete />
 				</button>
+				{store ? (
+					<button
+						className='store'
+						onClick={handleStore}
+						style={{ fill: 'white' }}
+					>
+						<Task />
+					</button>
+				) : (
+					<button
+						className='task'
+						onClick={handleStore}
+						style={{ fill: 'white' }}
+					>
+						<Store />
+					</button>
+				)}
+
 				<button
 					className='sort'
-					onClick={() => setSorted(!sorted)}
+					onClick={handleSorted}
 					style={sorted ? { fill: 'orange' } : { fill: 'white' }}
 				>
-					<Icon1 />
+					<Filter />
 				</button>
 				{todos.length > 12 && (
 					<button
@@ -95,7 +153,7 @@ export const TodoApp = () => {
 						onClick={scrollToTop}
 						style={{ fill: 'orange' }}
 					>
-						<Icon3 />
+						<Arrow />
 					</button>
 				)}
 
@@ -104,7 +162,7 @@ export const TodoApp = () => {
 					className='newtodo'
 					value={todo}
 					onChange={handleChange}
-					placeholder='Add New Todo'
+					placeholder={store ? 'Add New Product' : 'Add New Todo'}
 					onKeyDown={handleKeyDown}
 				/>
 				<br />
@@ -134,6 +192,7 @@ export const TodoApp = () => {
 				todos={todos}
 				setTodos={setTodos}
 				sorted={sorted}
+				store={store}
 			/>
 
 			<br />
