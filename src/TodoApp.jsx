@@ -93,6 +93,7 @@ export const TodoApp = () => {
 	const scrollToTop = () => {
 		// Scroll to the end using useRef to Ref=scroll
 		scroll.current.scrollIntoView({ behavior: 'smooth' });
+		toggleFullScreen();
 	};
 
 	const handleStore = () => {
@@ -110,6 +111,12 @@ export const TodoApp = () => {
 			sortedUser: !sorted,
 		});
 	};
+
+	function toggleFullScreen() {
+		if (!document.fullscreenElement) {
+			document.documentElement.requestFullscreen();
+		}
+	}
 
 	return (
 		<div className='container'>
