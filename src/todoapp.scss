@@ -99,6 +99,24 @@
 				padding: 0 0.2em;
 			}
 		}
+
+		.search-container{
+			.search{
+				@include font-size(22px, 28px);
+				color: $mainColor;
+				width: 5em;
+				margin-right: 0.2em;
+				padding: 0.2em 0.2em;
+				border: 2px solid $mainColor;
+				border-radius: 3px;
+				box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+			}
+			.btn{
+				margin: 0;
+				margin-left: 0.5em;
+			}
+		}
+		
 	}
 
 	footer {

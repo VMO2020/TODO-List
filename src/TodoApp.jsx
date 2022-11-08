@@ -20,6 +20,7 @@ const PREF = 'preferTodoList';
 
 export const TodoApp = () => {
 	const [todos, setTodos] = useState([]);
+	const [search, setSearch] = useState('');
 	const [todo, setTodo] = useState('');
 	const [userPreferences, setUserPreferences] = useState({
 		storeUser: false,
@@ -31,35 +32,21 @@ export const TodoApp = () => {
 
 	const scroll = useRef();
 
-	useEffect(() => {
-		const data = localStorage.getItem(KEY);
-		if (data) {
-			setTodos(JSON.parse(data));
-		}
-	}, []);
+	// SEARCH FUNCTION
+	const searcher = (e) => {
+		setSearch(e.target.value);
+		//console.log(e.target.value)
+	};
 
-	useEffect(() => {
-		const userPref = JSON.parse(localStorage.getItem(PREF));
-		console.log('User Pref:', userPref);
-		if (userPref) {
-			setUserPreferences(userPref);
-			setStore(userPref.storeUser);
-			setSorted(userPref.sortedUser);
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem(KEY, JSON.stringify(todos));
-		// console.log('Todos Stored');
-	}, [todos]);
-
-	useEffect(() => {
-		localStorage.setItem(PREF, JSON.stringify(userPreferences));
-		console.log('UserPreferences Stored');
-	}, [userPreferences]);
+	// FILTER FUNCTION
+	let results = !search
+		? todos
+		: todos.filter((todo) => todo.task.toLowerCase().startsWith(search));
+	// console.log(results);
 
 	const handleChange = (e) => {
 		setTodo(e.target.value);
+		setSearch('');
 		// console.log(e.target.value);
 	};
 
@@ -117,6 +104,33 @@ export const TodoApp = () => {
 			document.documentElement.requestFullscreen();
 		}
 	}
+
+	useEffect(() => {
+		const data = localStorage.getItem(KEY);
+		if (data) {
+			setTodos(JSON.parse(data));
+		}
+	}, []);
+
+	useEffect(() => {
+		const userPref = JSON.parse(localStorage.getItem(PREF));
+		// console.log('User Pref:', userPref);
+		if (userPref) {
+			setUserPreferences(userPref);
+			setStore(userPref.storeUser);
+			setSorted(userPref.sortedUser);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(KEY, JSON.stringify(todos));
+		// console.log('Todos Stored');
+	}, [todos]);
+
+	useEffect(() => {
+		localStorage.setItem(PREF, JSON.stringify(userPreferences));
+		// console.log('UserPreferences Stored');
+	}, [userPreferences]);
 
 	return (
 		<div className='container'>
@@ -178,6 +192,11 @@ export const TodoApp = () => {
 						<button className='btn' onClick={handleAddTodo}>
 							✏️
 						</button>
+						{todo && (
+							<button className='btn' onClick={() => setTodo('')}>
+								🗑
+							</button>
+						)}
 						{clear && (
 							<button className='btn' onClick={handleDelete}>
 								🗑
@@ -185,12 +204,20 @@ export const TodoApp = () => {
 						)}
 					</div>
 
-					<span className='tasks'>
-						{`Pending Tasks: `}
-						<b className='tasks__record'>{`${
-							todos.filter((todo) => !todo.completed).length
-						}`}</b>
-					</span>
+					<div className='search-container'>
+						<input
+							value={search}
+							onChange={searcher}
+							type='text'
+							placeholder='Search...'
+							className='search'
+						/>
+						{search && (
+							<button className='btn' onClick={() => setSearch('')}>
+								🗑
+							</button>
+						)}
+					</div>
 				</div>
 			</div>
 
@@ -200,6 +227,7 @@ export const TodoApp = () => {
 				setTodos={setTodos}
 				sorted={sorted}
 				store={store}
+				results={results}
 			/>
 
 			<br />

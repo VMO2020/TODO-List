@@ -2,7 +2,14 @@ import React from 'react';
 import { TodoItem } from '../components/TodoItem';
 import './todolist.scss';
 
-export const TodoList = ({ scroll, todos, setTodos, sorted, store }) => {
+export const TodoList = ({
+	scroll,
+	todos,
+	setTodos,
+	sorted,
+	store,
+	results,
+}) => {
 	const newTodos = [...todos];
 	function compareTasks(a, b) {
 		if (a.task < b.task) {
@@ -14,14 +21,21 @@ export const TodoList = ({ scroll, todos, setTodos, sorted, store }) => {
 		return 0;
 	}
 
-	const sortedTodos = newTodos.sort(compareTasks);
-	// console.log(sortedTodos);
+	let sortedTodos = newTodos.sort(compareTasks);
+
+	let sortedTodosFiltered = results.sort(compareTasks);
 
 	return (
 		<div className='todolist'>
 			<span ref={scroll}></span>
 			{todos.filter((todo) => !todo.completed).length > 0 && (
-				<h4 id='toplist'>{store ? 'To buy' : 'Tasks'}</h4>
+				<h4 id='toplist'>
+					{store
+						? `To buy: ${todos.filter((todo) => !todo.completed).length} `
+						: `Pending Tasks: ${
+								todos.filter((todo) => !todo.completed).length
+						  } `}
+				</h4>
 			)}
 
 			<ul>
@@ -39,11 +53,11 @@ export const TodoList = ({ scroll, todos, setTodos, sorted, store }) => {
 			</ul>
 			<div className='readyTasks'>
 				{todos.filter((todo) => todo.completed).length > 0 && (
-					<h4>{store ? 'Products' : 'Ready Tasks'}</h4>
+					<h4>{store ? 'Products List' : 'Ready Tasks'}</h4>
 				)}
 			</div>
 			<ul className='readyTasks__list'>
-				{(sorted ? sortedTodos : todos).map(
+				{(sorted ? sortedTodosFiltered : results).map(
 					(todo, i) =>
 						todo.completed && (
 							<TodoItem
