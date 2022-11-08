@@ -41,7 +41,9 @@ export const TodoApp = () => {
 	// FILTER FUNCTION
 	let results = !search
 		? todos
-		: todos.filter((todo) => todo.task.toLowerCase().startsWith(search));
+		: todos.filter((todo) =>
+				todo.task.toLowerCase().startsWith(search.toLowerCase())
+		  );
 	// console.log(results);
 
 	const handleChange = (e) => {
