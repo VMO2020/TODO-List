@@ -107,17 +107,23 @@ export const TodoApp = () => {
 		}
 	}
 
-	/* View in fullscreen */
+	// View in fullscreen
 	function openFullscreen() {
 		// Get the documentElement (<html>) to display the page in fullscreen */
 		const elem = document.documentElement;
 
 		if (elem.requestFullscreen) {
+			// Full screen
 			elem.requestFullscreen();
+		} else if (elem.mozRequestFullScreen) {
+			// Full screen in Firefox
+			elem.mozRequestFullScreen();
 		} else if (elem.webkitRequestFullscreen) {
-			elem.webkitRequestFullscreen(); /* Safari */
+			// Full screen in Chrome, Safari y Opera
+			elem.webkitRequestFullscreen();
 		} else if (elem.msRequestFullscreen) {
-			elem.msRequestFullscreen(); /* IE11 */
+			// Full screen in IE11 y Edge
+			elem.msRequestFullscreen();
 		}
 	}
 
