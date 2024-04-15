@@ -11,7 +11,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 	width: 100vw;
 	max-width: $maxWidth;
-	min-height: 100vh;
+	min-height: 100dvh; // dynamic view port
 	margin: 0;
 	padding: 0;
 	background-color: $backColor;
@@ -100,8 +100,8 @@
 			}
 		}
 
-		.search-container{
-			.search{
+		.search-container {
+			.search {
 				@include font-size(22px, 28px);
 				color: $mainColor;
 				width: 5em;
@@ -111,12 +111,11 @@
 				border-radius: 3px;
 				box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 			}
-			.btn{
+			.btn {
 				margin: 0;
 				margin-left: 0.5em;
 			}
 		}
-		
 	}
 
 	footer {
